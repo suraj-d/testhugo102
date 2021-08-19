@@ -1,0 +1,202 @@
+######################## default configuration ####################
+baseURL = "https://www.sunfashion.store/"
+title = "Dress material manufacturer and wholesale supplier in India"
+
+languageCode = "en-us"
+DefaultContentLanguage = "en"
+#theme = "hargo"
+summaryLength = "20"
+Paginate = 15
+PaginatePath = ""
+
+enableEmoji = true
+enableRobotsTXT = true
+canonifyURLs = true
+disqusShortname = ""
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
+############################# Plugins ##############################
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  link = "plugins/bootstrap/bootstrap.min.css"
+  [[params.plugins.css]]
+  link = "plugins/slick/slick.css"
+  [[params.plugins.css]]
+  link = "plugins/themify-icons/themify-icons.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  link = "plugins/lazysizes/lazysizes.min.js"
+  [[params.plugins.js]]
+  link = "plugins/jQuery/jquery.min.js"
+  [[params.plugins.js]]
+  link = "plugins/bootstrap/bootstrap.min.js"
+  [[params.plugins.js]]
+  link = "plugins/slick/slick.min.js"
+  #[[params.plugins.js]]
+  #link = "plugins/google-map/gmap.js"
+
+  
+############################## navigation ###############################
+[menu]
+    
+  [[menu.main]]
+  name = "Products"
+  URL = "dress-material"
+  weight = 1
+  # hasChildren = true
+
+    # [[menu.main]]
+    # parent = "Products"
+    # name = "test"
+    # url = "reseller"
+    # weight = 1
+
+  [[menu.main]]
+  name = "Wholesale"
+  URL = "non-catalog-dress-material-wholesale-supplier-in-surat"
+  weight = 2
+
+  [[menu.main]]
+  name = "Resell"
+  URL = "single-piece-dress-material-at-wholesale-price"
+  weight = 3
+  
+  #[[menu.main]]
+  #name = "Blog"
+  #URL = "blog"
+  #weight = 4
+  
+  [[menu.main]]
+  name = "FAQ"
+  URL = "faq"
+  weight = 5
+  
+  [[menu.main]]
+  name = "Contact"
+  URL = "contact"
+  weight = 6
+
+  [[menu.main]]
+  name = "Search"
+  URL = "search"
+  weight = 7
+
+  ############# footer menu #############
+  [[menu.footer]]
+  name = "Products"
+  URL = "dress-material"
+  weight = 1
+
+  [[menu.footer]]
+  name = "For Wholesaler"
+  URL = "non-catalog-dress-material-wholesale-supplier-in-surat"
+  weight = 2
+  
+  [[menu.footer]]
+  name = "Resell"
+  URL = "single-piece-dress-material-at-wholesale-price"
+  weight = 3
+
+  #[[menu.footer]]
+  #name = "Blog"
+  #URL = "blog"
+  #weight = 4
+
+  [[menu.footer]]
+  name = "FAQ"
+  URL = "faq"
+  weight = 5
+  
+  [[menu.footer]]
+  name = "Terms & Conditions"
+  URL = "terms-conditions"
+  weight = 6
+  
+  [[menu.footer]]
+  name = "Contact"
+  URL = "contact"
+  weight = 7
+
+#################### language ##########################################
+[languages]
+  [language.en]
+    languageName = "English"
+    languageCode = "en-us"
+    weight = 1
+
+#################### output ############################################
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "RSS"]
+
+#################### default parameters ################################
+[params]
+logo = "images/logo.jpeg"
+logoSquare = "images/logoSquare.jpeg"
+home = "Home"
+sitename = "Sun Fashion"
+legalname = "Sun Fashion and Lifestyle"
+
+# Meta data
+description = "Manufacturer and wholesale supplier of Ladies Dress material in India. Buy non catalogue Dress material, Salwar suit, Churidar material online at wholesale rate. Call or Whatsapp on 91-9820927720"
+keywords = "Wholesale Salwar Kameez, Wholesale Salwar Suit, Salwar Suit Surat, Cotton dress material, single piece dress material at wholesale price, dress material for reseller, wholesale dress materials for business"
+author = "Sun Fashion"
+
+# google map
+gmapAPI = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC3oZE7gFiOY2VdduQNHKoFvvRXpY3DYpw&libraries=places"
+mapLatitude = "21.193995"
+mapLongitude = "72.841687"
+mapMarker = "images/marker.png"
+
+# Google Analitycs, create new property
+googleAnalitycsID = "UA-87351575-4" # Your ID
+facebookPixelID = "1190697014639992"
+
+# Contact Information
+mobile = "9820927720"
+email = "sales@sunfashion.store"
+location = "Gujarat, India"
+
+# copyright
+copyright = "| Copyright &copy; 2020 Sun Fashion All Rights Reserved |"
+
+# Preloader
+[params.preloader]
+enable = true
+preloader = "images/preloader.svg" # use .png , .svg or .gif format
+
+# Product Rating
+# it works with https://rating-widget.com/ , you will get the ID and publicKey after creating your account there.
+[params.rating]
+enable = false
+websiteID = "444334"
+publicKey = "811cf0927332bf51f2e12f84608594ac"
+
+# Social Site
+[[params.social]]
+icon = "ti-facebook"
+link = "https://www.facebook.com/SunFashionNLifestyle/"
+
+[[params.social]]
+icon = "ti-twitter-alt"
+link = "#"
+	
+[[params.social]]
+icon = "ti-youtube"
+link = "https://www.youtube.com/channel/UC6kGCefaCDe8xpGNScn-LOA/"
+  
+[[params.social]]
+icon = "ti-instagram"
+link = "https://www.instagram.com/sun_.fashion/"
+  
+[[params.social]]
+icon = "ti-pinterest"
+link = "https://in.pinterest.com/sun_fashion/"
+
+# Contact Form
+#[params.contact]
+#formAction = "#" # contact form works with formspree.io

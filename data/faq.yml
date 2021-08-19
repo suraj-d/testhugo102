@@ -1,0 +1,18 @@
+faq:
+  enable: true
+
+  faqItem:
+    - title : Is COD available?
+      content : We only accept prepaid orders.
+
+    - title : Will get tracking details?
+      content : Yes, you can track you product deliver online.
+ 
+    - title : In how many days I will receive my product?
+      content : It takes 4-5 days for courier company to deliver your product.
+
+    - title : I want to cancel my order?
+      content : Order once dispatched cannot be cancelled.
+
+    - title : Any refunds/exchange?
+      content : Refund or exchange only incase you receive defect product.

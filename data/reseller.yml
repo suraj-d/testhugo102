@@ -1,0 +1,6 @@
+reseller:
+  enable: true
+  resellerDetail:
+    - title: Whatsapp group/broadcast screenshot
+    - title: Facebook page id
+    - title: Instagram id

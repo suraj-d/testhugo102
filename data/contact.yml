@@ -1,0 +1,24 @@
+############################# contact info ################
+contact:
+  enable : true
+  # office
+  office:
+    title : "Sales Office"
+    content : "K-329, New Textile Market, Near RKTM, Ring Road, Surat - 395002"
+    # other information comes from "config.toml"
+
+  # openig hour
+  openingHour:
+    title : "Opening Hours"
+    dayTimeList:
+      - dayTime : "Monday: 10:00 am – 08:00 pm"
+      - dayTime : "Tuesday: 10:00 am – 08:00 pm"
+      - dayTime : "Wednesday: 10:00 am – 08:00 pm"
+      - dayTime : "Thursday: 10:00 am – 08:00 pm"
+      - dayTime : "Friday: 10:00 am – 08:00 pm"
+      - dayTime : "Saturday: 10:00 am – 08:00 pm"
+      - dayTime : "Sunday: Closed"
+
+####################### google map ########################
+map:
+  enable: false

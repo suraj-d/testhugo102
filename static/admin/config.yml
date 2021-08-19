@@ -1,0 +1,293 @@
+
+backend:
+  # test-repo for local testing, replace with git-gateway for deployment
+#   name: test-repo
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+# This line should *not* be indented, save as draft option available
+#publish_mode: editorial_workflow
+
+media_folder: "assets/images" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/images" # The src attribute for uploaded media will begin with /images/uploads
+
+site_url: https://www.sunfashion.store
+display_url: https://www.sunfashion.store
+logo_url: https://www.sunfashion.store/images/logo.jpeg
+locale: "en"
+
+show_preview_links: true
+
+editor:
+  preview: true
+
+collections:
+  - name: "product" # Used in routes, e.g., /admin/collections/blog
+    label: "Product" # Used in the UI
+    folder: "content/products" # The path to the folder where the documents are stored
+    path: "{{sku}}/index"
+    media_folder: "" # Media files will be stored in the repo under static/images/uploads
+    public_folder: ""
+    create: true # Allow users to create new documents in this collection
+    # slug: "{{year}}-{{month}}-{{day}}_{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: SKU, name: sku, wiget: string, hint: Design-08}
+      - { label: Product ID, name: productID, widget: string, default: "0025", required: true, 
+          hint: 4 digit value eg- 0023}
+      - { label: Date, name: date, widget: datetime, dateFormat: YYYY-MM-DD, timeFormat: HH:mm:ss, required: true }
+      - { label: Type, name: type, widget: string, default: products, required: true, 
+          hint: must be "products"}
+      - { label: Images, name: images, widget: list, 
+          hint: first image will be shown in the product page,
+          fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string, required: false}] }
+      - { label: Video ID, name: video, widget: string, required: false, 
+          hint: only video id eg- 5Y35yjJfC2U; applied to last image}
+      - { label : Price, name: price, widget: number, required: true, 
+          hint: Final price eg- 560, default: 560}
+      - { label : PriceBefore, name: priceBefore, widget: number, required: false, 
+          hint: Final price eg- 999; will be slashed; keep blank if not required, default: 999}
+      - { label: Title, name: title, widget: string, required: true, 
+          hint: Shown in product page eg- Jaam cotton salwar suit Design '#'25 }
+      - { label: URL, name: url, widget: string, required: true,
+          hint: Shown as product url eg- Jaam cotton salwar suit with cotton salwar wholesale design25 wholesale}
+      - { label: Meta Description, name: description, widget: string, required: true,
+          hint: Shown in product list page and google search eg- Jaam cotton dress material with work dupatta; 2.10 mtr cotton salwar}
+      - { label: Short Description, name: shortDescription, widget: text, required: true,
+          hint: Shown in product single page eg- Beautiful jaam cotton dress material with work dupatta and 2.10 mtr cotton salwar}
+      - { label: Stock Out, name: stockOut, widget: boolean, default: false}          
+      - { label: Draft, name: draft, widget: boolean, default: false}
+      - { label: Content, name: body, widget: markdown}
+
+  - name: blog
+    label: Blog
+    folder: content/blog
+    path: '{{slug}}/index'
+    media_folder: ""
+    public_folder: ""
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    fields: 
+      - { label: Title, name: title, widget: string}
+      - { label: Date, name: date, widget: datetime}
+      - { label: Description, name: description, widget: string, hint: meta description}
+      - { label: Image, name: image, widget: image}
+      - { label: Author, name: author, widget: string}
+      - { label: Draft, name: draft, widget: boolean}
+      - { label: Content, name: body, widget: markdown}
+
+  - name: pages
+    label: Pages
+    files:
+        - file: data/homepage.yml
+          label: Homepage
+          name: home
+          fields: 
+            - { label: Banner, name: banner, widget: object, media_folder: "assets/images/products", public_folder: "/images/products", 
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Content, name: content, widget: text},
+                    { label: Image, name: image, widget: image},
+                    { label: Button, name: button, widget: object,
+                      fields: [
+                          { label: Enable, name: enable, widget: boolean},
+                          { label: Label, name: label, widget: string},
+                          { label: Link, name: link, widget: string}
+                      ]},
+                    { label: Video, name: video, widget: object,
+                      fields: [
+                          { label: Enable, name: enable, widget: boolean},
+                          { label: VideoURL, name: videoURL, widget: string}
+                      ]} 
+                ]
+             }
+
+            - { label: About, name: about, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title,name: title, widget: string},
+                    { label: Content, name: content, widget: text},
+                    { label: Image, name: image, widget: image}
+                ]}
+            
+            - { label: Call to Action, name: cta, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Content, name: content, widget: text},
+                    { label: Image, name: image, widget: image},
+                    { label: Overlay Image, name: overlayImage, widget: image},
+                    { label: Button, name: button, widget: object,
+                      fields: [
+                          {label: Label, name: label, widget: string},
+                          {label: Link, name: link, widget: string}
+                      ]}
+                ]}
+
+            - { label: Raw Material, name: material, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Subtitle, name: subtitle, widget: string},
+                    { label: Material Item, name: materialItem, widget: list,
+                      fields: [
+                          { label: Title, name: title, widge: string},
+                          { label: Image, name: image, widget: image},
+                          { label: Content, name: content, widget: text}
+                      ]}
+                ]}
+            
+            - { label: Advantage, name: advantage, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Image, name: image, widget: image},
+                    { label: Advantage List, name: advantageList, widget: list,
+                      fields: [{ label: List item, name: listItem, widget: string}] }
+                ]}
+
+            - { label: Promo Video, name: video, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Content, name: content, widget: string},
+                    { label: Video Thumbnail, name: videoThumb, widget: image},
+                    { label: VideoURL, name: videoURL, widget: string}
+                ]}
+
+            - { label: Products, name: products, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string}
+                ]}
+
+            - { label: Testimonial, name: testimonial, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Title, name: title, widget: string},
+                    { label: Testimonial Item, name: testimonialItem, widget: list,
+                      fields: [
+                          { label: Name, name: name, widget: string},
+                          { label: Image, name: image, widget: image},
+                          { label: Designation, name: designation, widget: string},
+                          { label: Content, name: Content, widget: text},
+                          { label: Rating, name: rating, widget: string}
+                      ]}
+                ]}
+        
+        - file: data/faq.yml
+          label: FAQ
+          name: faq
+          fields: 
+            - { label: FAQ, name: faq, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: FAQ Item, name: faqItem, widget: list,
+                      fields: [
+                          {label: Title, name: title, widge: string},
+                          {label: Content, name: content, widget: text}
+                      ]}
+                ]}
+
+        - file: data/contact.yml
+          label: Contact
+          name: contact
+          fields:
+            - { label: Contact, name: contact, widget: object,
+                fields: [
+                    { label: Enable, name: enable, widget: boolean},
+                    { label: Office, name: office, widget: object,
+                      fields: [
+                          {label: Title, name: title, widget: string},
+                          {label: Content, name: content, widget: text}
+                      ]},
+                    { label: Opening Hour, name: openingHour, widget: object,
+                      fields: [
+                          {label: Title, name: title, widge: string},
+                          {label: Day time list, name: dayTimeList, widget: list,
+                           fields: [{label: Day Time, name: dayTime, widget: string} ]}
+                      ]}
+                ]}
+
+            - { label: Map, name: map, widget: object,
+                fields: [
+                   { label: Enable, name: enable, widget: boolean} ]} 
+
+        - file: data/reseller.yml
+          label: Reseller
+          name: reseller
+          fields:
+            - { label: Reseller, name: reseller, widget: object,
+                fields: [
+                    {label: Enable, name: enable, widget: boolean},
+                    {label: Reseller Detail, name: resellerDetail, widget: list,
+                     fields: [ {label: Title, name: title, widget: string} ]}
+                ]}
+
+        - file: data/wholesale.yml
+          label: Wholesale
+          name: wholesale
+          fields:
+            - { label: Wholesale, name: wholesale, widget: object,
+                fields: [
+                    {label: Enable, name: enable, widget: boolean},
+                    {label: Wholesale Detail, name: wholesaleDetail, widget: list,
+                     fields: [{label: Title, name: title, widget: string}] }
+                ]}
+
+  - name: index
+    label: Index
+    files:
+        - file: content/terms-conditions/_index.md
+          label: Terms-Conditions
+          name: termsConditions
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
+
+        - file: content/faq/_index.md
+          label: FAQ
+          name: faq
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
+
+        - file: content/contact/_index.md
+          label: Contact
+          name: contact
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
+
+        - file: content/reseller/_index.md
+          label: Reseller
+          name: reseller
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
+
+        - file: content/wholesale/_index.md
+          label: Wholesale
+          name: wholesale
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
+
+        - file: content/search/_index.md
+          label: Search
+          name: search
+          fields: [   
+            { label: Title, name: title, widget: string},
+            { label: Date, name: date, widget: datetime},
+            { label: Description, name: description, widget: string, hint: meta description},
+            { label: Content, name: body, widget: markdown} ]
