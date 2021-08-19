@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<section class="section-sm pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mx-auto mx-2 mb-3 ">
+        <h3 class=>Search Products</h3>
+      </div>
+    </div>
+
+      <div class="row mx-auto mx-2 mb-2">
+        <div class="col-8 col-sm-11  p-0">
+          <input placeholder="Search for fabric, sku, name. Eg: Cotton" type="text" name="searchBox" id="searchBox" class="form-control" >
+        </div>
+        <div class="col-4 col-sm-1 ">
+          <button id="btnGo" class="btn btn-primary" >Go</button>
+        </div>
+      </div>
+
+          <div>&nbsp;</div>
+        <div class="row mx-auto mx-2 mb-2">
+            <a name="resultsArea"></a>
+            <div id="results" class="col-12 p-0">
+
+            </div>
+          
+
+         
+</section>
+
+<!--{{ partial "cta.html" . }}
+-->
+{{ end }}

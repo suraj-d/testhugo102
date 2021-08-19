@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <article>
+          <h2>{{ .Title }}</h2>
+          <ul class="list-inline mb-4">
+            <li class="list-inline-item"><i class="ti-pencil-alt text-primary mr-2"></i> By {{ .Params.Author }}</li>
+            <li class="list-inline-item"><i class="ti-calendar text-primary mr-2"></i>
+              {{ .PublishDate.Format "02 Jan, 2006" }}</li>
+          </ul>
+          
+          {{/*  get source  */}}
+          {{ $sources := (.Resources.ByType "image") }}
+                  {{/* image array   */}}
+              {{ with .Params.Image }}
+                {{ $.Scratch.Add "Images" (slice .) }}
+              {{ end }}
+            
+              {{/*  if define in md file then apply  */}}
+			    {{ range where  $sources ".Name" "in" ($.Scratch.Get "Images") }}
+			      <!--get and resize image-->
+          	{{ $src:= . }}
+			      {{ $small:= $src.Resize "730x jpg q85 Box" }}
+            <img data-src="{{ $small.RelPermalink }}" alt="{{ .Title }}" class="img-fluid w-100 mb-4 lazyload">
+          {{ end }}
+          <div class="content">
+            {{.Content}}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "cta.html" . }}
+
+{{ end }}

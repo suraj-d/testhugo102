@@ -1,0 +1,153 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 mb-4 mb-lg-0">
+        <!-- product image slider -->
+        <div class="product-slider">
+          {{ $arrayLength := len .Params.Images}}
+          {{ $videoID := .Params.Video}}
+          {{ $.Scratch.Set "counter" 0 }}
+          
+          <!-- get image from link code start -->
+          {{range .Params.Images }}
+
+            {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+            {{ $currentCount := $.Scratch.Get `counter`}}
+
+            <div data-image="{{ .image }}">
+              {{ if ne $currentCount $arrayLength }}
+                  <img class="img-fluid w-100 lazyload" data-src="{{ .image }}" alt="product-image">
+              {{ else }}
+                  {{ if $videoID }}
+
+                  <img class="img-fluid w-100 lazyload ti-control-play" data-src="{{ .image }}" alt="product-image">
+                  <a data-toggle="modal" data-src="https://www.youtube.com/embed/{{ $videoID }}" data-target="#videoModal" class="text-color video-modal content-center">
+                    <i class="pl-1 ti-control-play bg-gradient btn-play-lg"></i>
+                  </a>
+                  {{ else }}  
+                  <img class="img-fluid w-100 lazyload" data-src="{{ .image }}" alt="product-image">              
+                  {{ end }}
+              {{ end }}
+            </div>
+
+          {{end}}
+          <!--get image from link code end -->
+
+          <!-- get image from upload and resize code paste below-->
+       </div>
+    </div>
+
+      <!-- Video Modal -->
+      <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content border-0 rounded-0">
+            <div class="modal-header"> 
+              <h5 class="modal-title">{{.Title}}</h5> 
+              <button id="dismissBtn" type="button" class="close"> 
+                  <span aria-hidden="true">&times;</span> 
+              </button> 
+            </div>
+              <iframe width="100%" height="315" src="" id="video" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      {{/*  description rate title  */}}
+      <div class="col-lg-6 offset-lg-1">
+                
+        <h4 class="font-weight-medium mb-3">{{ .Title }}</h4>
+        
+        <h5 class="font-weight-medium">Short Description</h5>
+        <p>{{ .Params.ShortDescription | markdownify }}</p>
+		        
+        <!-- rating star -->
+        {{ if .Site.Params.rating.enable }}
+        <div class="rw-ui-container"></div>
+        {{ end }}
+        
+	      <!--
+        <div class="my-4">
+          {{if eq .Params.StockOut true }}
+            <span class="lead text-stockOut font-weight-medium">Stock Out</span>
+          {{ else }}
+            <span class="lead text-primary font-weight-medium">Rs. {{ .Params.Price }} each</span>
+            {{ if .Params.PriceBefore }}
+              <del>Rs. {{ .Params.PriceBefore }}</del>
+            {{ end }}
+          {{ end }}
+        </div>
+	-->
+
+        <div class="row my-2 p-2">
+
+              {{/*  get update button  */}}
+              {{/*  <div class="mr-1 mb-1">
+                <a class="btn btn-primary" href="https://wa.me/919820927720?text=Hi,%0ASend update for {{ .Params.Title }}%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="get update on whatsapp">Get update on Whatsapp</a>      	
+              </div>  */}}
+              
+              {{/*  share on whatsapp button  */}}
+              {{/*  <div>
+                <a class="btn btn-primary " href="https://wa.me/?text={{.Params.Title}}%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="share via whatsapp">Share Via Whatsapp</a>
+              </div>  */}}
+
+              {{/*  inquiry button  */}}
+              <div>
+                <a class="btn btn-primary " href="https://wa.me/919820927720?text=Hi,%0A%0ACan I get wholesale rate for%0A*{{.Params.Title}}*%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="wholesale rate">Get Wholesale Rate</a>
+              </div>
+              
+            </div>
+		
+		
+        {{/*  <button class="snipcart-add-item btn btn-primary" data-item-id="{{ .Params.ProductID }}"
+          data-item-name="{{ .Title }}" {{ range first 1 .Params.Images }} data-item-image="{{ .image | absURL }}"
+          {{ end }} data-item-price="{{ .Params.Price }}" data-item-url="{{ .Permalink }}">
+          Add to cart
+        </button>  */}}
+        
+        
+      <hr>
+      <!--
+      <div class="col-12">
+		  -->
+      <ul class="nav nav-tabs border-bottom-0" id="myTab" role="tablist">
+        <li class="nav-item mr-3">
+          <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab"
+          aria-controls="description" aria-selected="true">Description</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+          aria-selected="false">Reviews</a>
+        </li> -->
+        <li>
+          
+        </li>
+      </ul>
+      
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+          <div class="content" value="{{ .Content}}">{{ .Content }}</div>
+          {{/*  copy description button  */}}
+          {{/*  <button class="btn btn-primary copyText" id="copyButton">Copy Description</button>  */}}
+        </div>
+
+          <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            {{ template "_internal/disqus.html" . }}
+            </div>
+      </div>
+        <!--
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "cta.html" . }}
+
+{{ end }}

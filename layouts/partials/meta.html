@@ -1,0 +1,246 @@
+{{ "<!-- title tags -->" | safeHTML }}
+        <title itemprop="name">{{ .Title }}</title>
+        <meta property="og:title" content="{{ .Title }}"/>
+        <meta name="twitter:title" content="{{ .Title }}"/>
+        <meta itemprop="name" content="{{ .Title }}"/>
+        <meta name="application-name" content="{{ .Title }}"/>
+		<meta property="og:site_name" content="{{ .Site.Params.Legalname }}"/>
+		
+        {{ "<!-- description tags -->" | safeHTML }}
+        <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}"/>
+        <meta itemprop="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}"/>
+        <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}"/>
+        <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}"/>
+
+        
+        {{ "<!-- link tags -->" | safeHTML }}
+        <base href="{{ .Permalink }}">
+        <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+        <meta name="url" content="{{ .Permalink }}" />
+        <meta name="twitter:url" content="{{ .Permalink }}" />
+        <meta property="og:url" content="{{ .Permalink }}"/>
+
+        
+        {{ "<!-- image tags -->" | safeHTML }}
+		
+	{{ $sources := (.Resources.ByType "image") }}
+        {{ with .Params.Images }}
+        {{/*  Images array  */}}
+        {{ range first 1 . }}
+          {{ with . }}
+            {{ $.Scratch.Add "Images" (slice .image) }}
+          {{ end }}
+	{{ end }}
+		  
+        
+		{{/*  .Resources looks for images images from that particular folder  */}}
+		{{ range where  $sources ".Name" "in" ($.Scratch.Get "Images") }}  
+		<!--get and resize image-->
+		{{ $src:= . }}
+		{{ $small:= $src.Fill "800x900 center q85 Box" }}      
+		<meta itemprop="image" content="{{ $small.RelPermalink }}" />
+		<meta property="og:image" content="{{ $small.RelPermalink }}" /> 
+		<meta property="og:image:width" content="800" />
+		<meta property="og:image:height" content="900" />
+		<meta name="twitter:image" content="{{ $small.RelPermalink }}" />
+		<meta name="twitter:image:src" content="{{ $small.RelPermalink }}" /> 
+		{{ end }}
+		{{else}}
+		<!--get and resize image-->
+		{{ $src:= resources.Get .Site.Params.Logo }}
+		{{ $small:= $src.Fit "500x center q85 Box" }}
+		<meta itemprop="image" content="{{ .Site.Params.LogoSquare | absURL }}" />
+		<meta property="og:image" content="{{ .Site.Params.LogoSquare | absURL }}" /> 
+		<meta property="og:image:width" content="500" />
+		
+		<meta name="twitter:image" content="{{ .Site.Params.LogoSquare | absURL }}" />
+		<meta name="twitter:image:src" content="{{ .Site.Params.LogoSquare | absURL }}" /> 
+
+		{{end}}
+		
+		
+		
+        {{ "<!-- date tags -->" | safeHTML }}
+        <meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+		
+		{{ "<!-- Sitemap & RSS Feed tags -->" | safeHTML }}
+		<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ .Site.BaseURL }}sitemap.xml" /> 
+		{{ with .OutputFormats.Get "RSS" }}
+		<!-- <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" /> -->
+		<link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+		{{ end }}
+		
+		
+		{{ "<!-- Article page tags -->" | safeHTML }}
+		<!-- To make sure this renders only in the article page, we check the section -->
+		{{ if eq .Section "blog" }} 
+
+		<!-- Pagination meta tags for list pages only -->
+		{{ $paginator := .Paginate (where .Pages "Section" "blog") }}
+		{{ if $paginator }}
+			<link rel="first" href="{{ $paginator.First.URL }}">
+			<link rel="last" href="{{ $paginator.Last.URL }}">
+			{{ if $paginator.HasPrev }}
+			<link rel="prev" href="{{ $paginator.Prev.URL }}">
+			{{end }}
+			{{ if $paginator.HasNext }}
+			<link rel="next" href="{{ $paginator.Next.URL }}">
+			{{end }}
+		{{end }}
+		
+		<meta property="og:type" content="blog" />
+		<meta property="article:publisher" content="{{ .Site.Params.author }}" /> 
+		<meta property="og:article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} /> 
+		<meta property="article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+		
+		{{ with.Params.author }} 
+			<meta property="og:article:author" content="{{humanize . }}" />
+			<meta property="article:author" content="{{humanize . }}" /> 
+			<meta name="author" content="{{humanize . }}" /> 
+		{{ end }}
+		
+		{{ with.Params.category }} 
+			<meta name="news_keywords" content="{{ index . 0 }}" />
+			<meta property="article:section" content="{{ index . 0 }}" /> 
+		{{ end }}
+		
+		<script defer type="application/ld+json">
+			{
+			"@context": "http://schema.org",
+			"@type": "Article",
+			"headline": {{ .Title }},
+			"author": {
+			"@type": "Person",
+			"name": "{{ .Site.Params.author }}"
+			},
+			"datePublished": "{{ .Date.Format "2006-01-02" }}",
+			"description": {{ .Description }},
+			"wordCount": {{ .WordCount }},
+			"mainEntityOfPage": "True",
+			"dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+			"image": {
+				"@type": "ImageObject",
+				"url": "{{ . | absURL }}"
+			},
+			"publisher": {
+				"@type": "Organization",
+				"name": "{{ .Site.Params.Legalname }}",
+				"logo": {
+				"@type": "ImageObject",
+				"url": "{{ .Site.Params.LogoSquare | absURL }}"
+				}
+			}
+			}
+		</script>
+		{{ end }}
+        
+		{{ "<!-- Webpage tags -->" | safeHTML }}
+		<meta property="og:type" content="website" /> 
+		<meta name="author" content="{{ .Site.Params.author }}" />
+		<script defer type="application/ld+json">
+		{ 
+			"@context": "http://schema.org", 
+			"@type": "WebSite", 
+			"url": "{{ .Permalink }}", 
+			"sameAs": [
+			{{ range where .Site.Params.social ".link" "!=" "#"  }}
+			"{{ .link | safeURL }}",
+			{{ end }}
+			], 
+			"name": "{{ .Site.Params.Legalname }}", 
+			"alternateName": "{{ .Site.Params.Sitename }}",
+			"description": "{{ .Site.Params.Description }}",
+			"publisher": {
+				"@type": "Organization",
+				"legalName": "{{ .Site.Params.Legalname }}",
+				"alternateName": "{{ .Site.Params.Sitename }}",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "{{ .Site.Params.LogoSquare | absURL }}"
+					},
+				"location": {
+					"@type": "PostalAddress",
+					"streetAddress": "Ring Road",
+					"addressRegion": "Surat",
+					"postalCode": "395002"
+					}
+						}
+		}
+		</script>
+		
+		{{ "<!-- Logo tags -->" | safeHTML }}
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Organization",
+			  "url": "{{ .Permalink }}",
+			  "logo": "{{ .Site.Params.LogoSquare | absURL }}"
+			}
+		</script>
+
+		{{ "<!-- Local business tags -->" | safeHTML }}
+		{{ if .IsHome }}
+    		<script defer type="application/ld+json">
+			{
+      			"@context": "https://schema.org",
+      			"@type": "ClothingStore",
+      			"@id": "{{ .Permalink }}",
+      			"name": "{{ .Site.Params.Legalname }}",
+			"image": [
+        			{{ .Site.Params.LogoSquare | absURL }}
+			       ],
+      			"address": {
+        			"@type": "PostalAddress",
+        			"streetAddress": "Ring Road",
+        			"addressLocality": "Surat",
+        			"addressRegion": "Gujarat",
+        			"postalCode": "395002",
+        			"addressCountry": "India"
+      				},
+      			"geo": {
+        			"@type": "GeoCoordinates",
+        			"latitude": {{ .Site.Params.mapLatitude }},
+        			"longitude": {{ .Site.Params.mapLongitude }}
+      				},
+      			"url": "{{ .Permalink }}",
+      			"telephone": "{{ .Site.Params.Mobile }}",
+      			"priceRange": "$$",
+      			"openingHours": "Mo,Tu,We,Th,Fr,Sa 10:00-20:00"
+      		}
+    		</script>
+		{{ end }}
+		
+		{{ "<!-- Favicon tags -->" | safeHTML }}
+		<link rel="shortcut icon" href="{{ `images/favicon.ico` | absURL }} " type="image/x-icon">
+		<link rel="icon" href="{{ `images/favicon.ico` | absURL }} " type="image/x-icon">
+
+		{{/*  netlify cms scriplt  */}}
+		<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+		{{ "<!-- Search engine crawler tags -->" | safeHTML }}
+		{{ if ne .Section "admin"}}
+		<meta name="robots" content="index,follow" /> 
+		<meta name="googlebot" content="index,follow" />
+		{{ else }}
+		<meta name="robots" content="noindex,nofollow" /> 
+		<meta name="googlebot" content="noindex,nofollow" />
+		{{ end }}
+
+		{{ "<!-- Theme Color tags -->" | safeHTML }}
+		<meta name="theme-color" content="#7251a7" /> 
+		<meta name="msapplication-TileColor" content="#7251a7" />
+
+		{{ "<!-- Verification tags -->" | safeHTML }}
+	    <meta name="facebook-domain-verification" content="58mrxpvpep0ucwutoe5k26cla9ecmm" />	
+        <meta name="p:domain_verify" content="8af73347878b4d9fef9acfa89d347cf2"/>
+		
+		<meta name="keywords" content="{{ .Site.Params.Keywords}}" />
+		<meta name="imagemode" content="force" />
+		<meta name="coverage" content="Worldwide" /> 
+		<meta name="distribution" content="Global" />
+		<meta name="HandheldFriendly" content="True" /> 
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta name="apple-mobile-web-app-title" content="{{ .Site.Params.Sitename }}" /> 
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-touch-fullscreen" content="yes" />

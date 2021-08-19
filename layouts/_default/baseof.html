@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+      
+    <head itemscope itemtype="{{ .Site.BaseURL}}">
+        <meta charset="utf-8"/>
+
+        {{ "<!-- mobile responsive meta -->" | safeHTML }}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/> 
+                
+        <!-- All meta tages and links -->
+        {{ partial "meta" . }}
+        {{ partial "css-links" . }}
+
+    </head>
+    <body oncontextmenu="return false;">
+        {{ partial "preloader" . }}
+        {{ partial "header" . }}
+        <main id="main">
+        {{ block "main" . }}
+        {{ end }}
+        </main>
+        {{ partial "footer" . }}
+        {{ partial "js" . }}
+    </body>
+</html>

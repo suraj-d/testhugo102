@@ -1,0 +1,58 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+{{ if .Site.Data.reseller.reseller.enable }}
+<section class="section-sm pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-5">
+        <div class="content">
+          {{.Content}}
+        </div>
+      </div>
+
+      {{ with .Site.Data.reseller.reseller}}
+      <div class=" col-lg-7">
+        <div class="mt-lg-5 mb-5 mb-lg-0">
+          {{ $.Scratch.Set "counter" 0 }}
+          {{ range .resellerDetail }}
+          {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+          {{ "<!-- accordion item -->" | safeHTML }}
+              <div class="ml-3">
+                <i class="ti-arrow-circle-right h5 text-primary text-left p-2 d-inline-block">
+                    <span class="h4 text-dark mb-0 p-2">{{ .title | markdownify }}</span> 
+                </i>
+            </div>
+            {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      <div class="col-lg-4 offset-lg-1">
+        <div class="sticky-top top-100">
+        <h3 class="mb-4">Share your details</h3>
+        
+        <form>
+          <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Your Name">
+          <input type="text" class="form-control mb-2" id="location" name="location" placeholder="Your Location">
+          <textarea name="message" id="message" class="form-control mb-2" placeholder="Your Details"></textarea>
+          <button type="button" value="send" class="btn btn-block btn-outline-primary rounded contactUs">Whatsapp</button>
+        </form>
+        
+        <!-- <form action="{{ .Site.Params.contact.formAction }}" method="POST">
+          <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Your Name">
+          <input type="email" class="form-control mb-2" id="email" name="email" placeholder="Your Email">
+          <textarea name="message" id="message" class="form-control mb-2" placeholder="Your Message"></textarea>
+          <button type="submit" value="send" class="btn btn-block btn-outline-primary rounded">Send Now</button>
+        </form> -->
+        </div>
+      </div>      
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ partial "cta.html" . }}
+
+{{ end }}

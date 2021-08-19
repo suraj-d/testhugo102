@@ -1,0 +1,25 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range where .Site.RegularPages "Type" "products" -}}
+
+{{ $search_parameter:=dict "title" .Title "subtitle" .Params.shortDescription "description" .Params.description "content" .Content "permalink" .Permalink}}
+
+{{ $sources := (.Resources.ByType "image") }}
+
+{{ range first 1 .Params.Images }}
+  {{ with . }}
+     {{ $.Scratch.Add "Images" (slice .image) }}
+  {{ end }}
+{{ end }}
+
+{{ range where  $sources ".Name" "in" ($.Scratch.Get "Images") }}
+{{- $src:= . -}}
+{{- $small:= $src.Fill "500x600 center q95 Box" -}}
+{{- $image_parameter:= dict "image" $small.RelPermalink -}}
+
+{{ $index_par:= merge $search_parameter $image_parameter}}
+
+{{- $.Scratch.Add "index"  $index_par -}}
+
+{{- end -}}    
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}
