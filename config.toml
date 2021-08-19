@@ -1,5 +1,5 @@
 ######################## default configuration ####################
-baseURL = "test101sun.netlify.app/"
+baseURL = ""
 title = "Dress material manufacturer and wholesale supplier in India"
 
 languageCode = "en-us"
