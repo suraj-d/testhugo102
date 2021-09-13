@@ -16,6 +16,7 @@ title: Cotton bandhej dress material (Evergreen-2)
 url: cotton bandhej dressmaterial evergreen2
 description: Hand dyed cotton dress with cotton bottom and dupatta
 shortDescription: Beautiful hand dyed cotton dress with matching cottom bottom and dupatta.
+stockOut: true
 draft: false
 tags: []
 ---

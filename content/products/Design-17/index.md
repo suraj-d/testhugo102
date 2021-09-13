@@ -1,28 +1,28 @@
 ---
-sku: Design-15
+sku: Design-17
 productID: "0009"
 date: 2020-07-28T08:37:56+05:30
 type: products
 images:
-  - image: D15-1.jpeg
-  - image: D15-2.jpeg
-  - image: D15-3.jpeg
-  - image: D15-4.jpeg
-  - image: D15-5.jpeg
+  - image: https://img.fkcdn.com/image/kmjhw280/fabric/g/3/b/yes-unstitched-design-17-sun-fashion-and-lifestyle-original-imagff3vgrcnq4hm.jpeg
+
+  - image: https://img.fkcdn.com/image/kmjhw280/fabric/i/j/m/yes-unstitched-design-17-sun-fashion-and-lifestyle-original-imagff3vxyghydfm.jpeg
+
+ 
 price: 790
 priceBefore: ""
-title: "Jaam cotton salwar suit (Design #15)"
+title: "Jaam cotton salwar suit (Design #17)"
 url: Jaam cotton ladies salwar suit printed salwar and dupatta wholesale design15
 description: Jaam cotton salwar suit with printed mal dupatta and 2.5 mtr printed bottom
 shortDescription: Beautiful jaam cotton top with french knot handwork design,
   heavy printed cotton bottom with matching printed mal dupatta.
-stockOut: true
+stockOut: false
 draft: false
 tags: []
 ---
 BRAND - 24 CARAT SUIT
 
-DESIGN #15
+DESIGN #17
 
 💐💐💐💐💐💐💐💐💐
 

@@ -14,6 +14,7 @@ url: cotton bandhej dressmaterial wholesale evergreen1
 description: Hand dyed cotton dressmatrial with cotton bottom and dupatta
 shortDescription: Beatuful cotton hand dyed dress material with matching cotton
   bottom and dupatta.
+stockOut: true
 draft: false
 tags: []
 ---

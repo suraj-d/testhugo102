@@ -4,11 +4,12 @@ productID: "0018"
 date: 2020-07-29T08:07:59+05:30
 type: products
 images:
-  - image: D20-1-1.jpeg
-  - image: D20-1-2.jpeg
-  - image: D20-1-3.jpeg
-  - image: D20-1-4.jpeg
-  - image: D20-1-5.jpeg
+  - image: https://img.fkcdn.com/image/kmax8y80/fabric/7/j/g/yes-unstitched-desing-20-1-sun-fashion-and-lifestyle-original-imagf8jhbtrynvgr.jpeg
+
+  - image: https://img.fkcdn.com/image/kmax8y80/fabric/l/m/k/yes-unstitched-desing-20-1-sun-fashion-and-lifestyle-original-imagf8jhzyzvy2hg.jpeg
+
+  - image: https://img.fkcdn.com/image/kmax8y80/fabric/x/r/n/yes-unstitched-desing-20-1-sun-fashion-and-lifestyle-original-imagf8jhqvfusbjh.jpeg
+
 price: 650
 priceBefore: ""
 title: "Jacquard chanderi dress material (Design #20-1)"
@@ -17,6 +18,7 @@ description: Jacquard chanderi dress with 4 mtr silk bottom and lining with
   matching chanderi zari dupatta
 shortDescription: Beautiful jacquard chanderi zari checks dress with matching 4
   mtr bottom plus lining and chanderi zari checks dupatta.
+stockOut: false
 draft: false
 tags: []
 ---

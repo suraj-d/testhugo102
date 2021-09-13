@@ -4,27 +4,25 @@ productID: "0036"
 date: 2020-12-03T11:17:00.581Z
 type: products
 images:
-  - image: https://i.postimg.cc/nhRRvhHv/3.jpg
-  - image: https://i.postimg.cc/Hsh2vPyM/5.jpg
-  - image: https://i.postimg.cc/mkccPVgx/7.jpg
-  - image: https://i.postimg.cc/bYZzbZpR/1.jpg
-video: 5Y35yjJfC2U
+    - image: https://img.fkcdn.com/image/kkh6zrk0/fabric/v/y/c/yes-unstitched-design-32-sun-fashion-and-lifestyle-original-imafzt7nthxzvsz5.jpeg
+    - image: https://img.fkcdn.com/image/kkh6zrk0/fabric/z/n/v/yes-unstitched-design-32-sun-fashion-and-lifestyle-original-imafzt7nn3rfn4pt.jpeg
+    - image: https://img.fkcdn.com/image/kkh6zrk0/fabric/q/u/5/yes-unstitched-design-32-sun-fashion-and-lifestyle-original-imafzt7nkkqbzk7c.jpeg
+    - image: https://img.fkcdn.com/image/kkh6zrk0/fabric/1/n/s/yes-unstitched-design-32-sun-fashion-and-lifestyle-original-imafzt7nysvm8fh9.jpeg
 price: 560
 priceBefore: 999
 title: "Kota doria cutwork dress material (Design #32)"
 url: Kota doria cutwork dress material silk salwar and inner wholesale design32
 description: Kota doria cutwork dress material with one side cutwork border
-  dupatta, 2.5 mtr silk salwar
+    dupatta, 2.5 mtr silk salwar
 shortDescription: Beautiful Kota doria cutwork with handwork dress material, 2.2
-  mtr one side cutwork design dupatta, 4 mtr santoon silk bottom, and inner
+    mtr one side cutwork design dupatta, 4 mtr santoon silk bottom, and inner
 stockOut: false
 draft: false
 ---
-★彡 24 CARAT SUIT © 彡★
 
+★ 彡 24 CARAT SUIT © 彡 ★
 
 `COMMITTED TO QUALITY.`
-
 
 `COMMITTED TO YOU.`
 

@@ -14,7 +14,7 @@ url: cotton dress material embroidery banarasi dupatta gajro
 description: Cotton dress material with Embroidery work and banarasi dupatta
 shortDescription: Cotton dress material with embroidery neck work, cotton salwar
   with matching banarasi dupatta
-stockOut: false
+stockOut: true
 draft: false
 ---
 BRAND - 24 CARAT SUIT

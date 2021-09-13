@@ -17,6 +17,7 @@ description: Jaam cotton dress with chanderi dupatta and 2.5 mtr cotton bottom
 shortDescription: Beautiful jaam cotton dress in red color with beads and french
   knots handwork, with matching chanderi zari checks dupatta and 2.5 mtr cotton
   bottom.
+stockOut: true
 draft: false
 tags: []
 ---

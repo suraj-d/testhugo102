@@ -18,6 +18,7 @@ description: 3 top combo suit with cotton bottom and nazneen dupatta
 shortDescription: Beautiful 3 tops dress material with 2 chikenkari work top and
   1 printed top, with cotton bottom and shibori dyeing nazneen dupatta
 draft: false
+stockOut: true
 ---
 DESIGN 3 TOP WHITE-1
 

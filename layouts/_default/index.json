@@ -1,5 +1,5 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- range where .Site.RegularPages "Type" "products" -}}
+{{- range where (where .Site.RegularPages "Type" "products") "StockOut" false -}}
 
 {{ $def_par:=dict "title" .Title "subtitle" .Params.shortDescription "description" .Params.description "tags" .Params.tags  "content" .Content "permalink" .Permalink}}
 

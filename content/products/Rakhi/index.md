@@ -16,6 +16,7 @@ url: Jaam cotton dress chikankari bottom chanderi dupatta wholesale rakhi
 description: Jaam cotton dress material with chikankari bottom and chanderi dupatta
 shortDescription: Beautiful jaam cotton dress with beads and french knot
   handwork, cotton chikenkari bottom and chanderi zari border dupatta.
+stockOut: true
 draft: false
 tags: []
 ---

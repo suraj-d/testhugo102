@@ -4,12 +4,9 @@ productID: "0028"
 date: 2020-09-26T07:11:56.470Z
 type: products
 images:
-  - image: design-28-1-.jpeg
-  - image: design-28-2-.jpeg
-  - image: design-28-3-.jpeg
-  - image: design-28-4-.jpeg
-  - image: design-28-5-.jpeg
-  - image: design-28-6-.jpeg
+  - image: https://i.postimg.cc/ryBHwjFq/120504380-1233138867044162-6353337601873254590-o.jpg
+  - image: https://i.postimg.cc/wj0FLQHy/120585202-1233138950377487-8099449919928515602-o.jpg
+
 price: 699
 priceBefore: ""
 title: "Jaam cotton salwar suit (Design #28)"

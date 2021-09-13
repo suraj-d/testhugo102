@@ -181,9 +181,10 @@
         <h2>{{ .title | markdownify }}</h2>
         {{ end }}
       </div>
-      <!-- get pages where type is product and sort it by product id-->
-      {{ $productPageOnly:= where .Site.RegularPages "Type" "eq" "products"}}
-      {{ range first 6 ( sort $productPageOnly ".Params.ProductId" "desc"  ) }}
+      <!-- get pages where type is product and sort it by product id and stockout is false-->
+      
+      {{ $productPageOnly:= where (where .Site.RegularPages "Type" "eq" "products") "Params.StockOut" false}}
+      {{ range first 6  (sort $productPageOnly ".Params.date" "desc"  ) }}
       <div class="col-lg-4 col-sm-6 mb-4">
         <div class="card border-0 text-center">
           <a href="{{ .Permalink }}">

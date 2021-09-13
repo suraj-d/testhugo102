@@ -4,20 +4,19 @@ productID: "0029"
 date: 2020-09-30T11:07:01.640Z
 type: products
 images:
-  - image: whatsapp-image-2020-09-30-at-13.55.33-1-.jpeg
-  - image: whatsapp-image-2020-09-30-at-13.55.33-2-.jpeg
-  - image: whatsapp-image-2020-09-30-at-13.55.33-3-.jpeg
-  - image: whatsapp-image-2020-09-30-at-13.55.33.jpeg
+    - image: https://img.fkcdn.com/image/kmmcrrk0/fabric/v/t/l/yes-unstitched-design-26-sun-fashion-and-lifestyle-original-imagfh9gbgphtvkf.jpeg
+    - image: https://img.fkcdn.com/image/kmmcrrk0/fabric/u/g/m/yes-unstitched-design-26-sun-fashion-and-lifestyle-original-imagfh9gzgydkcdz.jpeg
 price: 699
 priceBefore: ""
 title: "Jaam cotton salwar suit (Design #26)"
 url: Jaam cotton dress material with cotton salwar design26 wholesale
 description: Jaam cotton dress material with slub cotton dupatta, 2.50 mtr cotton salwar
 shortDescription: Beautiful 2.0 mtr jaam cotton dress material with 2.20 mtr
-  slub cotton with zalar dupatta and 2.50 mtr cotton bottom
+    slub cotton with zalar dupatta and 2.50 mtr cotton bottom
 stockOut: false
 draft: false
 ---
+
 BRAND - 24 CARAT SUIT
 
 💐💐💐💐💐💐💐💐💐💐

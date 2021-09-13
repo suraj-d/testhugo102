@@ -17,7 +17,7 @@ description: 3 top combo with 2 chiken kari top and 1 banarasi top, matching
   cotton salwar and dupatta
 shortDescription: 3 piece combo with 2 chikenkari work top and 1 banarasi
   jacquard top, cotton salwar with matching dupatta
-stockOut: false
+stockOut: true
 draft: false
 ---
 DESIGN 3 TOP BANARASI-2

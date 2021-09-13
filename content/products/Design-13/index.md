@@ -16,6 +16,7 @@ url: Jaam cotton salwar suit banarasi dupatta wholesale design13
 description: Jaam cotton salwar suit with banarasi jacquard dupatta, 2.5 mtr salwar
 shortDescription: Beautiful jaam cotton salwar suit with handwork design, 36"
   banarasi jacquard dupatta with matching 2.5 mtr cotton bottom.
+stockOut: true
 draft: false
 tags: []
 ---

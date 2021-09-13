@@ -16,6 +16,7 @@ url: Jaam cotton salwar suit with cotton salwar wholesale design25
 description: Jaam cotton dress material with work dupatta, 2.10 mtr cotton salwar
 shortDescription: Beautiful jaam cotton dress material with work dupatta and
   2.10 mtr cotton salwar
+stockOut: true
 draft: false
 tags: []
 ---

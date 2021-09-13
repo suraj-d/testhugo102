@@ -16,6 +16,7 @@ description: Reyon cotton dress material with chanderi jacquard dupatta and 2.5
   mtr cotton bottom
 shortDescription: Beautiful reyon cotton top with french knots and beads
   handwork, with matching chanderi jacquard dupatta and 2.5 mtr cotton bottom.
+stockOut: true
 draft: false
 tags: []
 ---

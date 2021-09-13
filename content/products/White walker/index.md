@@ -17,6 +17,7 @@ url: Jaam cotton dress material with chikenkari salwar
 description: Jaam cotton dress material with 2.50 mtr cotton salwar whitewalker
 shortDescription: Beautiful jaam cotton dress material with fancy lace dupatta
   and 2.50 mtr chikenkari work salwar
+stockOut: true
 draft: false
 tags: []
 ---

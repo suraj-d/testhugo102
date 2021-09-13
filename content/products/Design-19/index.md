@@ -18,6 +18,7 @@ description: Linen cotton salwar suit with 2.5 mtr chikenkari botton and nazneen
 shortDescription: Beautiful linen cotton top with glass beads and french knots
   handwork, with matching 2.5 mtr cotton chikenkari bottom and nazneen shaded
   dupatta.
+stockOut: true
 draft: false
 tags: []
 ---
