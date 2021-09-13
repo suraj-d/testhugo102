@@ -5,8 +5,8 @@
 <section class="section-sm pt-0">
   <div class="container">
     <div class="row">
-	    {{ $stockInOnly := where .Pages ".Params.StockOut" false }}
-      {{ $paginator := .Paginate  (sort $stockInOnly ".Params.ProductID" "desc")}}
+	    
+      {{ $paginator := .Paginate  (sort .Pages ".Params.ProductID" "desc")}}
       {{ range where $paginator.Pages ".Parmas.StockOut" false }}
       
       <div class="col-lg-4 col-sm-6 mb-4">
