@@ -7,7 +7,7 @@
     <div class="row">
 	    {{ $stockInOnly := where .Pages ".Params.StockOut" false }}
       {{ $paginator := .Paginate  (sort $stockInOnly ".Params.ProductID" "desc")}}
-      {{ range $paginator.$stockInOnly }}
+      {{ range where $paginator.Pages ".Parmas.StockOut" false }}
       
       <div class="col-lg-4 col-sm-6 mb-4">
         <div class="card border-0 text-center">
