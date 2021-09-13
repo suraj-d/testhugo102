@@ -1,91 +1,66 @@
-{{ define "main" }} {{ partial "page-title.html" . }}
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
 
 <section class="section-sm pt-0">
-	<div class="container">
-		<div class="row">
-			<!-- paginator -->
-			{{ $stockInOnly := where .Pages ".Params.StockOut" false}}
-			{{ $paginator := .Paginate (sort $stockInOnly ".Params.date" "desc") }} 
-			
-			<!-- product list -->
-			{{ range $paginator.Pages }} 
-			
-				<div class="col-lg-4 col-sm-6 mb-4">
-					<div class="card border-0 text-center">
-						<a href="{{ .Permalink }}">
-							{{ range first 1 .Params.Images }}
-							<img data-src="{{ .image }}" alt="product-image" class="card-img-top rounded lazyload"/>
-							{{end}}<!-- image via link code end -->
+  <div class="container">
+    <div class="row">
+      {{ $paginator := .Paginate  (sort .Pages ".Params.ProductID" "desc")}}
+      {{ range $paginator.Pages }}
+      {{/*  {{ range (sort .Pages ".Params.ProductID" "desc") }}  */}}
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="card border-0 text-center">
+          <a href="{{ .Permalink }}">
 
-							<!-- get image from upload and resize code paste below -->
+             <!-- image via link code start -->
+             {{ range first 1 .Params.Images }}
+             <img data-src="{{ .image }}" alt="product-image" class="card-img-top rounded lazyload">
+               {{end}}
+               <!-- image via link code end -->
 
-						</a>
+            <!-- get image from upload and resize code paste below -->
+          </a>
+          
+          <div class="card-body">
+            <a href="{{ .Permalink }}" class="h4">{{ .Title }}</a>
+            <p>{{ .Params.Description }}</p>
+          <!--  <div class="mb-4">
+              <span class="lead text-primary">Rs. {{ .Params.Price }}</span>
+              {{ if .Params.PriceBefore }}
+              <del>Rs. {{ .Params.PriceBefore }}</del>
+              {{ end }}
+            </div>
+	          -->
 
-						<div class="card-body">
-							<a href="{{ .Permalink }}" class="h4">{{ .Title }}</a>
-							<p>{{ .Params.Description }}</p>
-							<!--  <div class="mb-4">
-							<span class="lead text-primary">Rs. {{ .Params.Price }}</span>
-							{{ if .Params.PriceBefore }}
-							<del>Rs. {{ .Params.PriceBefore }}</del>
-							{{ end }}
-							</div>
-							-->
+            {{/*  get update on whatsapp button  */}}
+            {{/*  <div class="mb-2">
+              <a class="btn btn-sm btn-outline-primary" href="https://wa.me/919820927720?text=Hi,%0ASend update for {{ .Params.Title }}%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="get update on whatsapp">Get update on Whatsapp</a>      	
+            </div>  */}}
+            
+            {{/*  share on whatsapp button  */}}
+            {{/*  <div>
+              <a class="btn btn-sm btn-outline-primary" href="https://wa.me/?text={{ .Params.Title }}%0D%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="share via whatsapp">Share Via Whatsapp</a>
+            </div>  */}}
 
-							{{/* get update on whatsapp button */}} 
-							{{/*<div class="mb-2">
-								<a
-									class="btn btn-sm btn-outline-primary"
-									href="https://wa.me/919820927720?text=Hi,%0ASend update for {{ .Params.Title }}%0ALink: {{.Permalink}}"
-									data-action="share/whatsapp/share"
-									target="_blank"
-									role="button"
-									rel="nofollow noreferrer noopener"
-									aria-label="get update on whatsapp"
-									>Get update on Whatsapp</a
-								>
-							</div>*/}} 
-							{{/* share on whatsapp button */}} 
-							{{/*<div>
-								<a
-									class="btn btn-sm btn-outline-primary"
-									href="https://wa.me/?text={{ .Params.Title }}%0D%0ALink: {{.Permalink}}"
-									data-action="share/whatsapp/share"
-									target="_blank"
-									role="button"
-									rel="nofollow noreferrer noopener"
-									aria-label="share via whatsapp"
-									>Share Via Whatsapp</a
-								>
-							</div>*/}} 
-							{{/* whoelsale button */}}
-							<div>
-								<a
-									class="btn btn-sm btn-outline-primary"
-									href="https://wa.me/919820927720?text=Hi,%0A%0ACan I get wholesale rate for%0A*{{.Params.Title}}*%0ALink: {{.Permalink}}"
-									data-action="share/whatsapp/share"
-									target="_blank"
-									role="button"
-									rel="nofollow noreferrer noopener"
-									aria-label="get wholesale rate"
-									>Get Wholesale Rate</a
-								>
-							</div>
-
-							<!--			
-							<button class="snipcart-add-item btn btn-sm btn-outline-primary" data-item-id="{{ .Params.ProductID }}"
-							data-item-name="{{ .Title }}" {{ range first 1 .Params.Images }} data-item-image="{{ .image | absURL }}"
-							{{ end }} data-item-price="{{ .Params.Price }}" data-item-url="{{ .Permalink }}">
-							Add to cart
-							</button>
-							-->
-						</div>
-					</div>
-				</div>
-			{{ end }}
-		</div>
-		{{ partial "pagination" . }}
-	</div>
+            {{/*  inqury button  */}}
+            <div>
+              <a class="btn btn-sm btn-outline-primary" href="https://wa.me/919820927720?text=Hi,%0A%0ACan I get wholesale rate for%0A*{{.Params.Title}}*%0ALink: {{.Permalink}}" data-action="share/whatsapp/share" target="_blank" role="button" rel="nofollow noreferrer noopener" aria-label="get wholesale rate">Get Wholesale Rate</a>
+            </div>
+      
+            <!--			
+              <button class="snipcart-add-item btn btn-sm btn-outline-primary" data-item-id="{{ .Params.ProductID }}"
+              data-item-name="{{ .Title }}" {{ range first 1 .Params.Images }} data-item-image="{{ .image | absURL }}"
+              {{ end }} data-item-price="{{ .Params.Price }}" data-item-url="{{ .Permalink }}">
+              Add to cart
+              </button>
+            -->
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    {{ partial "pagination" . }}
+  </div>
 </section>
 
 <!--
