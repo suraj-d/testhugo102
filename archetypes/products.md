@@ -1,7 +1,7 @@
 ---
 # product ID
 productID: "0001"
-date: {{.Date}}
+date: {{.Date | time.Format ":date_long"}}
 
 # type must be "products"
 type: "products"
